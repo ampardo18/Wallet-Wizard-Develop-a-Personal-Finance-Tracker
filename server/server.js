@@ -30,7 +30,7 @@ app.get("/api/transaction", async (req, res) => {
   try {
     client = await pool.connect();
     console.log('Got a connection from the pool');
-    const resp = await client.query('SELECT * FROM transaction');
+    const resp = await client.query('SELECT t.*, c.name AS category_name FROM transaction t JOIN category c ON t.category_id = c.id where t.deleted_at IS NULL');
     res.json(resp.rows);
   } catch (err) {
     console.error(err);
