@@ -19,11 +19,9 @@ const pool = new Pool({
 
 app.use(cors());
 
-
-app.get("/api/home", (req, res) => {
-  res.json({ message: "Welcome to Wallet Wizard Project" });
+app.get("/api/title", (req, res) => {
+  res.json({ title: "Wallet Wizard Project - February 2026" })
 });
-
 
 app.get("/api/transaction", async (req, res) => {
   let client
@@ -53,8 +51,8 @@ app.get("/api/category", async (req, res) => {
   }finally{
     client?.release();
   }
-})
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    });
+});
