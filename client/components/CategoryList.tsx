@@ -16,20 +16,20 @@ function CategoryList(){
 
     return(
         <div>
-            <table className="table-auto border border-black mx-auto text-center">
+            <table>
             <thead>
                 <tr>
-                <th className="border-4 px-4 py-2">ID</th>
-                <th className="border-4 px-4 py-2">Category Name</th>
-                <th className="border-4 px-4 py-2">Created at</th>
+                <th>ID</th>
+                <th>Category Name</th>
+                <th>Created at</th>
                 </tr>
             </thead>
             <tbody>
             {Array.isArray(category) && category.map((item, index) => (
                 <tr key={item.id}>
-                    <td className="border-4 px-4 py-2">{index + 1}</td>
-                    <td className="border-4 px-4 py-2">{item.category_name}</td>
-                    <td className="border-4 px-4 py-2">{new Date(item.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}</td>
+                    <td>{index + 1}</td>
+                    <td>{item.category_name}</td>
+                    <td>{new Date(item.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}</td>
                 </tr>
             ))}
             </tbody>
