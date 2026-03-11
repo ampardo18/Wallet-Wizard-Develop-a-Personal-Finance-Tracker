@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function TransactionList(){
+    const router = useRouter();
     const [transaction, setTransaction]= useState<
     {id: string; name: string; category_name: string; date: Date; amount: number; created_at: Date}[] | string
     >("Loading...");
@@ -29,7 +31,7 @@ function TransactionList(){
         </thead>
         <tbody>
            {Array.isArray(transaction) && transaction.map((item, index) => (
-            <tr key={item.id}>
+            <tr key={item.id} onClick={() => router.push(`/transaction/${item.id}`)} className="hover:bg-gray-100 cursor-pointer" >
               <td>{index + 1}</td>
               <td>{item.name}</td>
               <td>{item.category_name}</td>
