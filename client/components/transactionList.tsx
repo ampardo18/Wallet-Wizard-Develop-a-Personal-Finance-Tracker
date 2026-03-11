@@ -18,6 +18,7 @@ function TransactionList(){
 
     return(
     <div>
+        <h2 className="text-xl font-bold text-center p-2">Transaction List - <button onClick={() => router.push("/transaction/new")} className="bg-blue-300 font-bold w-28 border border-white cursor-pointer hover:bg-gray-300">Add New</button></h2>
         <table>
         <thead>
             <tr>

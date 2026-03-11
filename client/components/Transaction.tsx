@@ -119,6 +119,44 @@ function Transaction({id}: {id: string}){
             <div>
                 <label htmlFor="created_at">Created At : </label>{new Date(transaction.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}
             </div> 
+            <div className="flex items-center space-x-4">
+                <button
+                    className="bg-blue-400 font-bold w-full cursor-pointer hover:bg-blue-200"
+                    onClick={() => {
+                        fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/transaction/${id}`,{
+                            method: "PUT",
+                            headers: {
+                                "Content-Type": "application/json" 
+                            },
+                            body: JSON.stringify({name: name})
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data)
+                            router.replace("/")
+                        })  
+                    }}
+                >   
+                    Update
+                </button>
+            </div>
+                  <div className="flex items-center space-x-4">
+                    <button 
+                        className="bg-red-400 font-bold w-full cursor-pointer hover:bg-red-300"
+                        onClick={() => {
+                            fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/transaction/${id}`, {
+                                method: "DELETE"
+                            })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log(data)
+                                router.replace("/")
+                            })
+                        }}
+                        >
+                        Delete
+                    </button>
+            </div>
         </div>
     );
 }

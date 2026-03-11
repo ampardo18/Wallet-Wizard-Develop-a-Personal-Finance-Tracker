@@ -39,7 +39,7 @@ const TransactionForm = ({id}:{id:string}) => {
 
     return(
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 p-4 bg-gray-200 rounded-lg">
-            <h2 className="text-l font-bold">Add Transaction</h2>
+            <h2 className="text-l font-bold text-center">Add Transaction</h2>
             <div className="flex items-center space-x-4">
                 <label htmlFor="name">Name : </label>
                 <input
@@ -95,7 +95,7 @@ const TransactionForm = ({id}:{id:string}) => {
                     onChange={handleChange}
                 />
             </div>
-            <button type="submit" className="bg-blue-200 font-bold w-full">Add Transaction</button>
+            <button type="submit" className="bg-blue-400 font-bold w-full cursor-pointer hover:bg-blue-300">Add Transaction</button>
         </form>
     )
 }
