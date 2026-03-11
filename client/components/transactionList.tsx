@@ -37,7 +37,7 @@ function TransactionList(){
               <td>{item.name}</td>
               <td>{item.category_name}</td>
               <td>{new Date(item.date).toLocaleDateString()}</td>
-              <td align="right">{(item.amount / 100).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</td>
+              <td align="right">{(item.amount).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</td>
               <td>{new Date(item.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}</td>
             </tr>
          ))}

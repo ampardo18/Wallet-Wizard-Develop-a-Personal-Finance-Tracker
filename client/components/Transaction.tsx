@@ -116,7 +116,7 @@ function Transaction({id}: {id: string}){
                     className="flex-1 border rounded p-1"
                 />
             </div>    
-            <div>
+            <div className="text-left">
                 <label htmlFor="created_at">Created At : </label>{new Date(transaction.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}
             </div> 
             <div className="flex items-center space-x-4">
@@ -128,7 +128,13 @@ function Transaction({id}: {id: string}){
                             headers: {
                                 "Content-Type": "application/json" 
                             },
-                            body: JSON.stringify({name: name})
+                            body: JSON.stringify({
+                                name: transaction.name,
+                                amount: transaction.amount,
+                                description: transaction.description,
+                                category_id: transaction.category_id,
+                                date: transaction.date
+                            })
                         })
                         .then((response) => response.json())
                         .then((data) => {

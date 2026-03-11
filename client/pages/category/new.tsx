@@ -3,6 +3,7 @@ import Title from "@/components/Title";
 
 function Index(){
     const id = crypto.randomUUID()
+    console.log(id)
     return(
         <div className="text-center">
             <Title />

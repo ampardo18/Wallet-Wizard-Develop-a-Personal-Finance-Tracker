@@ -45,7 +45,7 @@ function Category( {id} : {id: string}){
                     }
                 />
             </div>
-            <div className="text-center">
+            <div>
                 <label htmlFor="created_at">Created At : </label>{new Date(category.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}
             </div>
             <div className="flex items-center space-x-4">
@@ -57,7 +57,7 @@ function Category( {id} : {id: string}){
                             headers: {
                                 "Content-Type": "application/json" 
                             },
-                            body: JSON.stringify({name: name})
+                            body: JSON.stringify({name: category.name})
                         })
                         .then((response) => response.json())
                         .then((data) => {

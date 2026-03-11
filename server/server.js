@@ -73,6 +73,7 @@ app.get("/api/transaction/:id", async (req, res) => {
 app.put("/api/transaction/:id", async (req, res) => {
   let client
   const { id } = req.params;
+  const { name, amount, description, category_id, date } = req.body;
   try{
     client = await pool.connect();
     console.log('Got a connection from the pool');
@@ -118,7 +119,7 @@ app.post("/api/transaction/:id", async (req, res) => {
     client = await pool.connect()
     console.log('got a connection to the pool')
     const resp = await client.query('INSERT INTO transaction (id, name, amount, description, category_id, date, created_at, updated_at) values ($1, $2, $3, $4, $5, $6, NOW(), NOW()) RETURNING *;', [id, name, amount, description, category_id, date])
-    resp.json(resp.rows[0])
+    res.json(resp.rows[0])
   }catch (err){
     res.json({error: err})
     console.log(err)
@@ -155,7 +156,7 @@ app.put("/api/category/:id", async (req, res) => {
   try{
     client = await pool.connect();
     console.log('Got a connection from the pool');
-    const resp = await client.query('UPDATE category SET name = $1, updated_now = NOW() WHERE id = $2 RETURNING *;', [name, id])
+    const resp = await client.query('UPDATE category SET name = $1, updated_at = NOW() WHERE id = $2 RETURNING *;', [name, id])
     if(resp.rows.length === 0){
       return res.status(404).json({error: "Category not found"});
     }
@@ -196,7 +197,7 @@ app.post("/api/category/:id", async (req, res) => {
     client = await pool.connect()
     console.log('got a connection to the pool')
     const resp = await client.query('INSERT INTO category (id, name, created_at, updated_at) values ($1, $2, NOW(), NOW()) RETURNING *;', [id, name])
-    resp.json(resp.rows[0])
+    res.json(resp.rows[0])
   }catch (err){
     res.json({error: err})
     console.log(err)
