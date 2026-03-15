@@ -38,7 +38,7 @@ function TransactionList(){
               <td className="group-hover:bg-gray-200">{item.name}</td>
               <td className="group-hover:bg-gray-200">{item.category_name}</td>
               <td className="group-hover:bg-gray-200">{new Date(item.date).toLocaleDateString()}</td>
-              <td className="group-hover:bg-gray-200" align="right">{(item.amount).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</td>
+              <td className="group-hover:bg-gray-200">${(item.amount).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</td>
               <td className="group-hover:bg-gray-200">{new Date(item.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}</td>
               <td onClick={(e) => e.stopPropagation()}>
                     <button className="cursor-pointer hover:scale-120 transition-transform" onClick={() => 

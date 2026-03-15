@@ -15,13 +15,15 @@ function Title(){
     const walletWizardTitle = title.title === "Wallet Wizard Project - February 2026"
 
     return(
-        <div className="flex items-center justify-center sticky top-0 bg-white z-50 p-2">
-            <h1 className="text-2xl font-bold">
-                {walletWizardTitle ? (
-                    <Link href="/" className="block cursor-pointer">{title.title}</Link>
-                ) : (title.title)}
-            </h1>
-        </div>
+        <header className="bg-blue-300 sticky top-0 z-50 p-2" >
+            <div className="flex items-center justify-center">
+                <h1 className="text-2xl font-bold">
+                    {walletWizardTitle ? (
+                        <Link href="/" className="block cursor-pointer">{title.title}</Link>
+                    ) : (title.title)}
+                </h1>
+            </div>
+        </header>
     )
 }
 
