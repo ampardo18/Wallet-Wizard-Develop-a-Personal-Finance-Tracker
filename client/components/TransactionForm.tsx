@@ -28,7 +28,7 @@ const TransactionForm = ({id}:{id:string}) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({...formData, amount: parseFloat(formData.amount) * 100})
+            body: JSON.stringify({...formData, amount: parseFloat(formData.amount)})
         }).then((response) => response.json())
           .then((data) => {
             console.log(data)

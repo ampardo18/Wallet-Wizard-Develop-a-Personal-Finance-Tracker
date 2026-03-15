@@ -70,23 +70,6 @@ function Category( {id} : {id: string}){
                 </button>
 
             </div>
-            <div className="flex items-center space-x-4">
-                    <button 
-                        className="bg-red-400 font-bold w-full cursor-pointer hover:bg-red-300"
-                        onClick={() => {
-                            fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/category/${id}`, {
-                                method: "DELETE"
-                            })
-                            .then((response) => response.json())
-                            .then((data) => {
-                                console.log(data)
-                                router.replace("/")
-                            })
-                        }}
-                        >
-                        Delete
-                    </button>
-            </div>
         </div>
     )
 }
