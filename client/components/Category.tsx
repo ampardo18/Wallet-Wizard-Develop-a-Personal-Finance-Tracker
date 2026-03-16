@@ -30,7 +30,7 @@ function Category( {id} : {id: string}){
 
     return(
         <div className="flex flex-col space-y-4 p-4 bg-gray-200 rounded-lg">
-            <h2 className="text-l font-bold text-center">Category Edit/Delete</h2>
+            <h2 className="text-l font-bold text-center">Category Edit</h2>
             <div className="flex items-center space-x-4">
                 <label htmlFor="id">ID : </label>{category.id}
             </div>
