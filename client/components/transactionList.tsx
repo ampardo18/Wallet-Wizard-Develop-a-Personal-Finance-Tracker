@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { FaTrash } from "react-icons/fa"
 
 function TransactionList(){
     const router = useRouter();
@@ -32,13 +33,26 @@ function TransactionList(){
         </thead>
         <tbody>
            {Array.isArray(transaction) && transaction.map((item, index) => (
-            <tr key={item.id} onClick={() => router.push(`/transaction/${item.id}`)} className="hover:bg-gray-100 cursor-pointer" >
-              <td>{index + 1}</td>
-              <td>{item.name}</td>
-              <td>{item.category_name}</td>
-              <td>{new Date(item.date).toLocaleDateString()}</td>
-              <td align="right">{(item.amount).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</td>
-              <td>{new Date(item.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}</td>
+            <tr key={item.id}  className="group cursor-pointer" onClick={() => router.push(`/transaction/${item.id}`)}>
+              <td className="group-hover:bg-gray-200">{index + 1}</td>
+              <td className="group-hover:bg-gray-200">{item.name}</td>
+              <td className="group-hover:bg-gray-200">{item.category_name}</td>
+              <td className="group-hover:bg-gray-200">{new Date(item.date).toLocaleDateString()}</td>
+              <td className="group-hover:bg-gray-200">${(item.amount).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}</td>
+              <td className="group-hover:bg-gray-200">{new Date(item.created_at).toLocaleString('en-US', {timeZoneName: 'short'})}</td>
+              <td onClick={(e) => e.stopPropagation()}>
+                    <button className="cursor-pointer hover:scale-120 transition-transform" onClick={() => 
+                        fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/transaction/${item.id}`, {
+                            method: "DELETE"
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data)
+                            router.reload()
+                        })}>
+                        <FaTrash style={{color: 'red'}}/>
+                    </button>
+              </td>
             </tr>
          ))}
         </tbody>

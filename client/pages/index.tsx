@@ -10,7 +10,7 @@ function Index() {
   <div>
     <Title /> <br></br>
     <CategoryList /> <br></br>
-    <TransactionList />
+    <TransactionList /> <br></br>
   </div>
   )
 }
