@@ -9,7 +9,7 @@ function TransactionList(){
     >("Loading...");
 
     useEffect(() => {
-        fetch("http://localhost:3100/api/transaction")
+        fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/transaction`)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);

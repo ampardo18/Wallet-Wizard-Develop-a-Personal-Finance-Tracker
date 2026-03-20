@@ -9,7 +9,7 @@ function CategoryList(){
     >();
 
     useEffect(() => {
-        fetch("http://localhost:3100/api/category")
+        fetch(`${process.env.NEXT_PUBLIC_API_HOST}/api/category`)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
