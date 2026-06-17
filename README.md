@@ -3,10 +3,7 @@
 
 ## Overview
 
-Wallet Wizard Finance Tracker is a full-stack personal finance tracker for organizing transactions into user-defined categories.<br> 
-The application is built around a relational data model that links each transaction to a category, making it easier to review spending<br> 
-patterns in a clear, table-based interface. A Next.js frontend renders the data in responsive lists and forms, while an Express.js API used<br> 
-PostgreSQL to handle category and transaction CRUD operations.
+Wallet Wizard Finance Tracker is a full-stack personal finance tracker for organizing transactions into user-defined categories. The application is built around a relational data model that links each transaction to a category, making it easier to review spending patterns in a clear, table-based interface. A Next.js frontend renders the data in responsive lists and forms, while an Express.js API used PostgreSQL to handle category and transaction CRUD operations.
 
 ## Tech Stack
 
@@ -40,7 +37,8 @@ auth flow aligned with the existing Express.js API structure
 mode, allowing users to select and remove multiple entries at once for a cleaner and more fluid UI
 - Add a landing page to mimic a real-world web application, as well as provide key detail about the purpose<br>
 of the application and why it is needed
-- Add a widget that allows users to create a budget and allocate funds to different transactions
+- Add a widget that allows users to create a budget and allocate funds to different categories; each transaction<br>
+will automatically calculate the new budget after a recent transaction from the category
 - The application currently triggers a full page reload after deleting entries, which could be improved by<br>
 implementing dynamic UI updates with state management for a smoother user experience
 
